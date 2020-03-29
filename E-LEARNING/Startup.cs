@@ -1,6 +1,8 @@
-﻿using Owin;
+﻿using Microsoft.Owin;
+using Owin;
 
-namespace IdentitySample
+[assembly: OwinStartupAttribute(typeof(E_LEARNING.Startup))]
+namespace E_LEARNING
 {
     public partial class Startup
     {
