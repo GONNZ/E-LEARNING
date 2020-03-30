@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace IdentitySample.Models
@@ -64,6 +65,17 @@ namespace IdentitySample.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        public string nombre { get; set; }
+        [Required]
+        public int cedula { get; set; }
+        [Required]
+        public string apellidos { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime fechaNacimiento { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
