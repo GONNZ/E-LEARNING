@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace IdentitySample.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         public AccountController()
