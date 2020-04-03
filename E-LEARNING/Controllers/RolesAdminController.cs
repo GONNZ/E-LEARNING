@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace IdentitySample.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         public RolesAdminController()
@@ -102,7 +102,8 @@ namespace IdentitySample.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = new IdentityRole(roleViewModel.Name);
+                var role = new AplicationRole(roleViewModel.Name);
+                role.descripcion = roleViewModel.descripcion;     
                 var roleresult = await RoleManager.CreateAsync(role);
                 if (!roleresult.Succeeded)
                 {
@@ -128,7 +129,7 @@ namespace IdentitySample.Controllers
             {
                 return HttpNotFound();
             }
-            RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
+            RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name,descripcion = role.descripcion  };
             return View(roleModel);
         }
 
@@ -137,12 +138,13 @@ namespace IdentitySample.Controllers
         [HttpPost]
 
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] RoleViewModel roleModel)
+        public async Task<ActionResult> Edit([Bind(Include = "Name,Id, descripcion")] RoleViewModel roleModel)
         {
             if (ModelState.IsValid)
             {
                 var role = await RoleManager.FindByIdAsync(roleModel.Id);
                 role.Name = roleModel.Name;
+                role.descripcion = roleModel.descripcion;
                 await RoleManager.UpdateAsync(role);
                 return RedirectToAction("Index");
             }

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace IdentitySample.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         public AccountController()
@@ -149,7 +149,10 @@ namespace IdentitySample.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
+                    nombre = model.nombre, cedula = model.cedula, apellidos = model.apellidos, 
+                    fechaNacimiento = model.fechaNacimiento };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
