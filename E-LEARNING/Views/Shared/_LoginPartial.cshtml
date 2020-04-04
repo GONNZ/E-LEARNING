@@ -1,46 +1,108 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "ml-auto" }))
     {
         @Html.AntiForgeryToken()
 
-        @*<ul class="navbar-nav align-content-end">
-                <li class="nav-item">
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() +
-                    "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                </li>
-            </ul>*@
-
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() +
-                      "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administración
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+                            @Html.ActionLink("Roles", "Index", "RolesAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                            @Html.ActionLink("Usuarios", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-
-
     }
 }
+else if (Request.IsAuthenticated && User.IsInRole("Profe"))
+{
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "ml-auto" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profesor
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+}
+else if (Request.IsAuthenticated && User.IsInRole("Alumno"))
+{
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "ml-auto" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Alumno
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+}
+else if (Request.IsAuthenticated)
+{
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "ml-auto" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Alumno
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+}
+
 else
 {
-    @*<ul class="nav navbar-nav navbar-right">
-            <li class="nav-item">
-                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
-            </li>
-            <li class="nav-item">
-                @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
-            </li>
-        </ul>*@
-
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
