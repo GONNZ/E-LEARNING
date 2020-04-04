@@ -52,5 +52,7 @@ namespace IdentitySample.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<E_LEARNING.Models.Curso> Cursoes { get; set; }
     }
 }

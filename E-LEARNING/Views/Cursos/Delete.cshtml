@@ -1,0 +1,49 @@
+﻿@model E_LEARNING.Models.Curso
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Curso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionCurso)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -170,6 +170,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\CursosProfeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -193,9 +195,22 @@
     <Compile Include="Migrations\202003300612252_Roles2.Designer.cs">
       <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004040205097_Cursos.cs" />
+    <Compile Include="Migrations\202004040205097_Cursos.Designer.cs">
+      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040218221_CursoProfe.cs" />
+    <Compile Include="Migrations\202004040218221_CursoProfe.Designer.cs">
+      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.cs" />
+    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.Designer.cs">
+      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -373,6 +388,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Cursos\Create.cshtml" />
+    <Content Include="Views\Cursos\Delete.cshtml" />
+    <Content Include="Views\Cursos\Details.cshtml" />
+    <Content Include="Views\Cursos\Edit.cshtml" />
+    <Content Include="Views\Cursos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +414,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003300612252_Roles2.resx">
       <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040205097_Cursos.resx">
+      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040218221_CursoProfe.resx">
+      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040303035_CursoProfe-Cursos.resx">
+      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
