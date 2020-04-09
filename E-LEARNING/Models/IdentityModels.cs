@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using E_LEARNING.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -17,7 +19,8 @@ namespace IdentitySample.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode =true)]
         public DateTime fechaNacimiento { get; set; }
-
+        public List<CursoProfe> CursoProfe { get; set; }
+        public List<Matricula> Matriculas { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -52,7 +55,11 @@ namespace IdentitySample.Models
         {
             return new ApplicationDbContext();
         }
-
+       
         public System.Data.Entity.DbSet<E_LEARNING.Models.Curso> Cursoes { get; set; }
+
+        public System.Data.Entity.DbSet<E_LEARNING.Models.CursoProfe> CursoProfes { get; set; }
+
+        public System.Data.Entity.DbSet<E_LEARNING.Models.Grupos> Grupos { get; set; }
     }
 }

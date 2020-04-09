@@ -22,6 +22,8 @@ namespace E_LEARNING.Models
         [Required]
         [Display(Name = "Descripción Curso")]
         public string DescripcionCurso { get; set; }
+
+        public List<CursoProfe> CursoProfe { get; set; }
     }
 
 }

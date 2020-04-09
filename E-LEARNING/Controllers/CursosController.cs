@@ -4,16 +4,19 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using E_LEARNING.Models;
 using IdentitySample.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace E_LEARNING.Controllers
 {
     public class CursosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
 
         // GET: Cursos
         public ActionResult Index()
