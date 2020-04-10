@@ -14,7 +14,7 @@ namespace E_LEARNING.Models
         public int IdLeccion { get; set; }
         public string Titulo { get; set; }
         public String Contenido { get; set; }
-        public Grupos Grupo { get; set; }
+        public CursoProfe CursoProfe { get; set; }
 
     }
 }

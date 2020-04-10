@@ -16,6 +16,6 @@ namespace E_LEARNING.Models
 
         public ApplicationUser Alumno { get; set; }
 
-        public Grupos Grupo { get; set; }
+        public CursoProfe CursoProfe { get; set; }
     }
 }

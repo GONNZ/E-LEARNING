@@ -60,6 +60,5 @@ namespace IdentitySample.Models
 
         public System.Data.Entity.DbSet<E_LEARNING.Models.CursoProfe> CursoProfes { get; set; }
 
-        public System.Data.Entity.DbSet<E_LEARNING.Models.Grupos> Grupos { get; set; }
     }
 }

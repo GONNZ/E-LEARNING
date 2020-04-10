@@ -170,7 +170,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminCursosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -179,93 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003300312260_InitialCreate.cs" />
-    <Compile Include="Migrations\202003300312260_InitialCreate.Designer.cs">
-      <DependentUpon>202003300312260_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300529183_InitialUsersIdentity.cs" />
-    <Compile Include="Migrations\202003300529183_InitialUsersIdentity.Designer.cs">
-      <DependentUpon>202003300529183_InitialUsersIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300554565_Roles.cs" />
-    <Compile Include="Migrations\202003300554565_Roles.Designer.cs">
-      <DependentUpon>202003300554565_Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300612252_Roles2.cs" />
-    <Compile Include="Migrations\202003300612252_Roles2.Designer.cs">
-      <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040205097_Cursos.cs" />
-    <Compile Include="Migrations\202004040205097_Cursos.Designer.cs">
-      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040218221_CursoProfe.cs" />
-    <Compile Include="Migrations\202004040218221_CursoProfe.Designer.cs">
-      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.cs" />
-    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.Designer.cs">
-      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040401138_CursoProfes.cs" />
-    <Compile Include="Migrations\202004040401138_CursoProfes.Designer.cs">
-      <DependentUpon>202004040401138_CursoProfes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040504251_CursoProfesNuevosCampos.cs" />
-    <Compile Include="Migrations\202004040504251_CursoProfesNuevosCampos.Designer.cs">
-      <DependentUpon>202004040504251_CursoProfesNuevosCampos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004050048111_CursoProfesMenosCampos.cs" />
-    <Compile Include="Migrations\202004050048111_CursoProfesMenosCampos.Designer.cs">
-      <DependentUpon>202004050048111_CursoProfesMenosCampos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004052201575_RelacionCursos-CursoProfe.cs" />
-    <Compile Include="Migrations\202004052201575_RelacionCursos-CursoProfe.Designer.cs">
-      <DependentUpon>202004052201575_RelacionCursos-CursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004052204303_RelacionCursos-CursoProfeFix.cs" />
-    <Compile Include="Migrations\202004052204303_RelacionCursos-CursoProfeFix.Designer.cs">
-      <DependentUpon>202004052204303_RelacionCursos-CursoProfeFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004060304070_MuchosaMuchosCursoProfe.cs" />
-    <Compile Include="Migrations\202004060304070_MuchosaMuchosCursoProfe.Designer.cs">
-      <DependentUpon>202004060304070_MuchosaMuchosCursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004060417453_ListCursosUsuarios.cs" />
-    <Compile Include="Migrations\202004060417453_ListCursosUsuarios.Designer.cs">
-      <DependentUpon>202004060417453_ListCursosUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004060508435_FixCursoProfe.cs" />
-    <Compile Include="Migrations\202004060508435_FixCursoProfe.Designer.cs">
-      <DependentUpon>202004060508435_FixCursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004060512138_FixCursoProfe2.cs" />
-    <Compile Include="Migrations\202004060512138_FixCursoProfe2.Designer.cs">
-      <DependentUpon>202004060512138_FixCursoProfe2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004070246305_CursoProfe-Grupos-Matricula.cs" />
-    <Compile Include="Migrations\202004070246305_CursoProfe-Grupos-Matricula.Designer.cs">
-      <DependentUpon>202004070246305_CursoProfe-Grupos-Matricula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004071811133_fix.cs" />
-    <Compile Include="Migrations\202004071811133_fix.Designer.cs">
-      <DependentUpon>202004071811133_fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004071821141_prueba.cs" />
-    <Compile Include="Migrations\202004071821141_prueba.Designer.cs">
-      <DependentUpon>202004071821141_prueba.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004071849048_RelacionGruposCursoProfe.cs" />
-    <Compile Include="Migrations\202004071849048_RelacionGruposCursoProfe.Designer.cs">
-      <DependentUpon>202004071849048_RelacionGruposCursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004071909338_RelacionGruposCursoProfefix.cs" />
-    <Compile Include="Migrations\202004071909338_RelacionGruposCursoProfefix.Designer.cs">
-      <DependentUpon>202004071909338_RelacionGruposCursoProfefix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004072026111_MatriculaFix.cs" />
-    <Compile Include="Migrations\202004072026111_MatriculaFix.Designer.cs">
-      <DependentUpon>202004072026111_MatriculaFix.cs</DependentUpon>
+    <Compile Include="Migrations\202004100204056_Initial.cs" />
+    <Compile Include="Migrations\202004100204056_Initial.Designer.cs">
+      <DependentUpon>202004100204056_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +196,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ELEARNINGDB0.mdf" />
+    <Content Include="App_Data\ELEARNINGDB0_log.ldf">
+      <DependentUpon>ELEARNINGDB0.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -457,89 +376,23 @@
     <Content Include="Views\Cursos\Details.cshtml" />
     <Content Include="Views\Cursos\Edit.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
-    <Content Include="Views\AdminCursos\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003300312260_InitialCreate.resx">
-      <DependentUpon>202003300312260_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300529183_InitialUsersIdentity.resx">
-      <DependentUpon>202003300529183_InitialUsersIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300554565_Roles.resx">
-      <DependentUpon>202003300554565_Roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300612252_Roles2.resx">
-      <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040205097_Cursos.resx">
-      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040218221_CursoProfe.resx">
-      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040303035_CursoProfe-Cursos.resx">
-      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040401138_CursoProfes.resx">
-      <DependentUpon>202004040401138_CursoProfes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040504251_CursoProfesNuevosCampos.resx">
-      <DependentUpon>202004040504251_CursoProfesNuevosCampos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004050048111_CursoProfesMenosCampos.resx">
-      <DependentUpon>202004050048111_CursoProfesMenosCampos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004052201575_RelacionCursos-CursoProfe.resx">
-      <DependentUpon>202004052201575_RelacionCursos-CursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004052204303_RelacionCursos-CursoProfeFix.resx">
-      <DependentUpon>202004052204303_RelacionCursos-CursoProfeFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004060304070_MuchosaMuchosCursoProfe.resx">
-      <DependentUpon>202004060304070_MuchosaMuchosCursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004060417453_ListCursosUsuarios.resx">
-      <DependentUpon>202004060417453_ListCursosUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004060508435_FixCursoProfe.resx">
-      <DependentUpon>202004060508435_FixCursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004060512138_FixCursoProfe2.resx">
-      <DependentUpon>202004060512138_FixCursoProfe2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004070246305_CursoProfe-Grupos-Matricula.resx">
-      <DependentUpon>202004070246305_CursoProfe-Grupos-Matricula.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004071811133_fix.resx">
-      <DependentUpon>202004071811133_fix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004071821141_prueba.resx">
-      <DependentUpon>202004071821141_prueba.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004071849048_RelacionGruposCursoProfe.resx">
-      <DependentUpon>202004071849048_RelacionGruposCursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004071909338_RelacionGruposCursoProfefix.resx">
-      <DependentUpon>202004071909338_RelacionGruposCursoProfefix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004072026111_MatriculaFix.resx">
-      <DependentUpon>202004072026111_MatriculaFix.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004100204056_Initial.resx">
+      <DependentUpon>202004100204056_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

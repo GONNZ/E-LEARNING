@@ -18,6 +18,9 @@ namespace E_LEARNING.Models
         public ApplicationUser Profe { get; set; }
         [Required]
         public Curso Curso { get; set; }
- 
+
+        public List<Matricula> Matricula { get; set; }
+        public List<Lecciones> Lecciones { get; set; }
+
     }
 }
