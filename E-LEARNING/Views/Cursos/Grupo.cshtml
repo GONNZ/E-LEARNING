@@ -1,0 +1,47 @@
+﻿@model E_LEARNING.Models.Curso
+
+@{
+    ViewBag.Title = "Grupo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="mt-3 mb-3">
+        <h4>Generación de Grupo: @ViewBag.curso.NombreCurso </h4>
+    </div>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Nombre: @Html.TextBox("SearchString") &nbsp
+        <input type="submit" value="Buscar" class="btn btn-success" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Nombre: </th>
+
+        <th>Apellidos: </th>
+
+        <th>Correo: </th>
+
+        <th>Opciones</th>
+    </tr>
+
+    @foreach (var profe in ViewBag.profes)
+    {
+        <tr>
+            <th> @profe.nombre</th>
+
+            <th> @profe.apellidos </th>
+
+            <th> @profe.Email </th>
+
+            <th>
+                @Html.ActionLink("Generar grupo", "GeneraGrupo", new { idProfe = profe.Id, idCurso = ViewBag.curso.IdCurso }, new { @class = "btn btn-dark" })
+            </th>
+        </tr>
+    }
+
+</table>

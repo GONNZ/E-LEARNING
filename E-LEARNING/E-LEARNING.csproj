@@ -171,7 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
-    <Compile Include="Controllers\CursosProfeController.cs" />
+    <Compile Include="Controllers\GruposAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -179,44 +179,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003300312260_InitialCreate.cs" />
-    <Compile Include="Migrations\202003300312260_InitialCreate.Designer.cs">
-      <DependentUpon>202003300312260_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300529183_InitialUsersIdentity.cs" />
-    <Compile Include="Migrations\202003300529183_InitialUsersIdentity.Designer.cs">
-      <DependentUpon>202003300529183_InitialUsersIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300554565_Roles.cs" />
-    <Compile Include="Migrations\202003300554565_Roles.Designer.cs">
-      <DependentUpon>202003300554565_Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003300612252_Roles2.cs" />
-    <Compile Include="Migrations\202003300612252_Roles2.Designer.cs">
-      <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040205097_Cursos.cs" />
-    <Compile Include="Migrations\202004040205097_Cursos.Designer.cs">
-      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040218221_CursoProfe.cs" />
-    <Compile Include="Migrations\202004040218221_CursoProfe.Designer.cs">
-      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.cs" />
-    <Compile Include="Migrations\202004040303035_CursoProfe-Cursos.Designer.cs">
-      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
+    <Compile Include="Migrations\202004100204056_Initial.cs" />
+    <Compile Include="Migrations\202004100204056_Initial.Designer.cs">
+      <DependentUpon>202004100204056_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\CursoProfe.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Lecciones.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Matricula.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ELEARNINGDB0.mdf" />
+    <Content Include="App_Data\ELEARNINGDB0_log.ldf">
+      <DependentUpon>ELEARNINGDB0.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -393,43 +376,29 @@
     <Content Include="Views\Cursos\Details.cshtml" />
     <Content Include="Views\Cursos\Edit.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
+    <Content Include="Views\GruposAdmin\Create.cshtml" />
+    <Content Include="Views\GruposAdmin\Delete.cshtml" />
+    <Content Include="Views\GruposAdmin\Details.cshtml" />
+    <Content Include="Views\GruposAdmin\Edit.cshtml" />
+    <Content Include="Views\GruposAdmin\Index.cshtml" />
+    <Content Include="Views\Cursos\Grupo.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003300312260_InitialCreate.resx">
-      <DependentUpon>202003300312260_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300529183_InitialUsersIdentity.resx">
-      <DependentUpon>202003300529183_InitialUsersIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300554565_Roles.resx">
-      <DependentUpon>202003300554565_Roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003300612252_Roles2.resx">
-      <DependentUpon>202003300612252_Roles2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040205097_Cursos.resx">
-      <DependentUpon>202004040205097_Cursos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040218221_CursoProfe.resx">
-      <DependentUpon>202004040218221_CursoProfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040303035_CursoProfe-Cursos.resx">
-      <DependentUpon>202004040303035_CursoProfe-Cursos.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004100204056_Initial.resx">
+      <DependentUpon>202004100204056_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
