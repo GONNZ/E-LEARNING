@@ -16,9 +16,21 @@ namespace E_LEARNING.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: GruposAdmin
-        public ActionResult Index()
+        public ActionResult Index(string searchProfe, string searchCurso)
         {
-            return View(db.CursoProfes.Include(x => x.Curso).Include(x => x.Profe).ToList());
+            var grupos = db.CursoProfes.Include(x => x.Curso).Include(x => x.Profe).ToList();
+
+            if (!String.IsNullOrEmpty(searchProfe)) 
+            {
+                grupos = grupos.Where(g => g.Profe.nombre.Contains(searchProfe)).ToList();    
+            }
+
+            if (!String.IsNullOrEmpty(searchCurso))
+            {
+                grupos = grupos.Where(g => g.Curso.NombreCurso.Contains(searchCurso)).ToList();
+            }
+
+            return View(grupos);
         }
 
         // GET: GruposAdmin/Details/5

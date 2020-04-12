@@ -5,29 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="mb-3 ml-3">Gestión de Grupos</h2>
+
+<!--Buscador-->
+
+<button type="button" class="btn btn-primary float-right mr-3" data-toggle="modal" data-target="#staticBackdrop">
+    Buscador
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Buscador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        Nombre Profesor: @Html.TextBox("searchProfe", null, new { @class = "m-2" }) <br />
+                        Nombre Curso: @Html.TextBox("searchCurso",null, new { @class = "m-2" }) <br />
+                        <input type="submit" value="Buscar" class="btn btn-success" />
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Fin de buscador-->
+
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Grupo", "Index", "Cursos", null, new { @class = "btn btn-success ml-3" })
 </p>
-<table class="table">
-    <tr>
-        <th>Curso</th>
-        <th>Profesor</th>
-        <td>Opciones</td>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
+<div class="container">
 
-        <td>@item.Curso.NombreCurso</td>
-        <td>@item.Profe.nombre</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCursoProfe }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCursoProfe }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCursoProfe })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
 
-</table>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.IdCursoProfe }) |
+            @ |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdCursoProfe })*@
+
+
+        <div class="card mb-3">
+            <div class="card-header text-white bg-dark">
+                @item.Curso.NombreCurso
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@item.Profe.nombre @item.Profe.apellidos</h5>
+                <p class="card-text">@item.Curso.DescripcionCurso</p>
+                @Html.ActionLink("Ver Grupo", "Details", new { id = item.IdCursoProfe }, new { @class = "btn btn-outline-success btn-lg" })
+                <a href="#" class="btn btn-outline-danger btn-lg"> Borrar Grupo</a>
+            </div>
+        </div>
+
+
+    }
+
+</div>
+
+
+
