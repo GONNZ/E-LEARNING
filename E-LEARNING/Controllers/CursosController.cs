@@ -16,7 +16,42 @@ namespace E_LEARNING.Controllers
     public class CursosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        public CursosController()
+        {
+        }
 
+        public CursosController(ApplicationUserManager userManager,
+            ApplicationRoleManager roleManager)
+        {
+            UserManager = userManager;
+            RoleManager = roleManager;
+        }
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            set
+            {
+                _userManager = value;
+            }
+        }
+
+        private ApplicationRoleManager _roleManager;
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
 
         // GET: Cursos
         public ActionResult Index()
@@ -126,6 +161,78 @@ namespace E_LEARNING.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        //Acción para generar curso
+        //Get Cursos/Grupo
+
+        public async Task<ActionResult> Grupo(int? id, string SearchString)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Curso curso = db.Cursoes.Find(id);
+            
+            if (curso == null)
+            {
+                return HttpNotFound();
+            }
+
+            //Lista de profesores
+            var role = await RoleManager.FindByNameAsync("Profe");
+                
+            // Get the list of Users in this Role
+            var users = new List<ApplicationUser>();
+
+            // Get the list of Users in this Role
+            foreach (var user in UserManager.Users.ToList())
+            {
+                if (await UserManager.IsInRoleAsync(user.Id, role.Name))
+                {
+                    users.Add(user);
+                }
+            }
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                users = users.Where(x => x.nombre.Contains(SearchString)).ToList();
+
+            }
+
+            ViewBag.profes = users;
+            ViewBag.curso = curso;
+
+            return View(curso);
+        }
+
+        public ActionResult GeneraGrupo(string idProfe, int? idCurso) 
+        {
+            if (String.IsNullOrEmpty(idProfe) || idCurso == null) {
+                return HttpNotFound();
+            }
+
+            var profe = db.Users.Find(idProfe);
+            var curso = db.Cursoes.Find(idCurso);
+
+            if (profe == null || curso == null)
+            {
+                return HttpNotFound();
+            }
+
+            CursoProfe grupo = new CursoProfe();
+            grupo.Curso = curso;
+            grupo.Profe = profe;
+
+            db.CursoProfes.Add(grupo);
+            db.SaveChanges();
+
+            
+
+            return RedirectToAction("Index", "GruposAdmin");
         }
     }
 }

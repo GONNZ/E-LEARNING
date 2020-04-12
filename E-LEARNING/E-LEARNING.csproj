@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\GruposAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -187,7 +188,6 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\CursoProfe.cs" />
-    <Compile Include="Models\Grupos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lecciones.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -376,6 +376,12 @@
     <Content Include="Views\Cursos\Details.cshtml" />
     <Content Include="Views\Cursos\Edit.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
+    <Content Include="Views\GruposAdmin\Create.cshtml" />
+    <Content Include="Views\GruposAdmin\Delete.cshtml" />
+    <Content Include="Views\GruposAdmin\Details.cshtml" />
+    <Content Include="Views\GruposAdmin\Edit.cshtml" />
+    <Content Include="Views\GruposAdmin\Index.cshtml" />
+    <Content Include="Views\Cursos\Grupo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
