@@ -26,21 +26,25 @@
 
         <th>Correo: </th>
 
+        <th>Cédula: </th>
+
         <th>Opciones</th>
     </tr>
 
     @foreach (var profe in ViewBag.profes)
     {
         <tr>
-            <th> @profe.nombre</th>
+            <td> @profe.nombre</td>
 
-            <th> @profe.apellidos </th>
+            <td> @profe.apellidos </td>
 
-            <th> @profe.Email </th>
+            <td> @profe.Email </td>
 
-            <th>
+            <td> @profe.cedula </td>
+
+            <td>
                 @Html.ActionLink("Generar grupo", "GeneraGrupo", new { idProfe = profe.Id, idCurso = ViewBag.curso.IdCurso }, new { @class = "btn btn-dark" })
-            </th>
+            </td>
         </tr>
     }
 
