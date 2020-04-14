@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "GeneraMatricula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Selección de Grupo: </h4>
+        <p>Matrícula de Estudiante: @ViewBag.alumno.nombre</p>
+        <p>Curso por Matricular: @ViewBag.curso.NombreCurso</p>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Número de grupo: </th>
+
+            <th>Profesor: </th>
+
+            <th>Curso: </th>
+
+            <th>Opciones: </th>
+        </tr>
+
+        @foreach (var grupo in ViewBag.grupos)
+        {
+            <tr>
+                <td> <p>@grupo.IdCursoProfe  </p></td>
+
+                <td> <p>@grupo.Profe.nombre @grupo.Profe.apellidos</p> </td>
+
+                <td> <p>@grupo.Curso.NombreCurso</p> </td>
+
+                <td>
+                    @Html.ActionLink("Realizar matrícula", "FinalizaMatricula", new { idGrupo = grupo.IdCursoProfe, idCurso = ViewBag.curso.IdCurso, idAlumno = ViewBag.alumno.Id  }, new { @class = "btn btn-dark" })
+                </td>
+            </tr>
+        }
+
+    </table>

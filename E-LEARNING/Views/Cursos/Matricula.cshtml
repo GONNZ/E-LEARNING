@@ -1,0 +1,52 @@
+﻿@model E_LEARNING.Models.Curso
+
+@{
+    ViewBag.Title = "Matricula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mt-3 mb-3">
+    <h4>Matrícula de Estudiante: @ViewBag.curso.NombreCurso </h4>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Nombre estudiante: @Html.TextBox("SearchString") &nbsp
+        <input type="submit" value="Buscar" class="btn btn-success" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Nombre: </th>
+
+        <th>Apellidos: </th>
+
+        <th>Correo: </th>
+
+        <th>Cédula: </th>
+
+        <th>Opciones: </th>
+    </tr>
+
+    @foreach (var alum in ViewBag.profes)
+    {
+<tr>
+    <td> <p>@alum.nombre</p></td>
+
+    <td> <p>@alum.apellidos</p> </td>
+
+    <td> <p>@alum.Email</p> </td>
+
+    <td> <p>@alum.cedula</p> </td>
+
+    <td>
+        @Html.ActionLink("Seleccionar grupo", "GeneraMatricula", new { idAlum = alum.Id, idCurso = ViewBag.curso.IdCurso }, new { @class = "btn btn-dark" })
+    </td>
+</tr>
+    }
+
+</table>
