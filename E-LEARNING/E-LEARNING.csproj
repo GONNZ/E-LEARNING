@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\GruposAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeccionesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
@@ -384,6 +385,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Cursos\Matricula.cshtml" />
     <Content Include="Views\Cursos\GeneraMatricula.cshtml" />
+    <Content Include="Views\Lecciones\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -400,6 +402,9 @@
     <EmbeddedResource Include="Migrations\202004100204056_Initial.resx">
       <DependentUpon>202004100204056_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ArchivosApp\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

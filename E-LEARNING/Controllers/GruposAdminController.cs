@@ -40,7 +40,11 @@ namespace E_LEARNING.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CursoProfe cursoProfe = db.CursoProfes.Find(id);
+            CursoProfe cursoProfe = db.CursoProfes.Include(x=> x.Curso).Include(x=> x.Profe).SingleOrDefault(x => x.IdCursoProfe == id);
+            List<Lecciones> lecciones = db.Lecciones.Where(x => x.CursoProfe.IdCursoProfe == cursoProfe.IdCursoProfe).ToList();
+            ViewBag.cantlecc = lecciones.Count;
+            ViewBag.Lecciones = lecciones;
+
             if (cursoProfe == null)
             {
                 return HttpNotFound();
@@ -48,28 +52,6 @@ namespace E_LEARNING.Controllers
             return View(cursoProfe);
         }
 
-        // GET: GruposAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: GruposAdmin/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCursoProfe")] CursoProfe cursoProfe)
-        {
-            if (ModelState.IsValid)
-            {
-                db.CursoProfes.Add(cursoProfe);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(cursoProfe);
-        }
 
         // GET: GruposAdmin/Edit/5
         public ActionResult Edit(int? id)

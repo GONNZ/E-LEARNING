@@ -5,15 +5,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CursoProfe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
+
+<div class="container pt-3">
+    <div class="row">
+
+
+        <div class="col-12">
+            <div class="card ">
+
+                <div class="card-header bg-dark">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3 class="text-white">Gestión de Aula</h3>
+                        </div>
+                        <div class="col-4 m-auto">
+                            <a href="#" class="btn btn-outline-primary">Lista de Estudiantes</a>
+                            @Html.ActionLink("Añadir Lección", "Create", "Lecciones", new { id = Model.IdCursoProfe }, new { @class = "btn btn-outline-primary" })
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+                    <div class="col">
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">@Model.Curso.NombreCurso</h4>
+                            <p>Mi aula virtual: @Model.Curso.NombreCurso | @Model.Curso.DescripcionCurso </p>
+                            <hr>
+                            <p class="mb-0">Docente: @Model.Profe.nombre @Model.Profe.apellidos</p>
+                        </div>
+                    </div>
+                    <div class="container m-auto">
+                        <h4>Lecciones</h4>
+
+                        @if ((int)ViewBag.cantlecc > 0)
+                        {
+
+                            foreach (var x in ViewBag.Lecciones)
+                            {
+                                <div class="card text-center">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">@x.Titulo</h5>
+                                        <p class="card-text"></p>
+                                        <a href="#" class="btn btn-outline-success">Go somewhere</a>
+                                    </div>
+
+                                </div>
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>No hay lecciones generadas para este curso</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-3 mt-3">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.IdCursoProfe }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-dark" })
+            </p>
+        </div>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCursoProfe }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+

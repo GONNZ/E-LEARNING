@@ -1,0 +1,60 @@
+﻿@model E_LEARNING.Models.Lecciones
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Creación de Lecciones</h4>
+        <p>Mi aula virtual</p>
+        <hr>
+        <p class="mb-0">Docente:</p>
+    </div>
+</div>
+
+<div class="container m-auto">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <input type="hidden" name="Grupo" value="@ViewBag.idCursoP"/>      
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" ,style="max-width:100%;" } })
+                    @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contenido, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @*@Html.TextAreaFor(model => model.Contenido, new { htmlAttributes = new { @class = "form-control"} })*@
+                    <textarea class="form-control form-control-lg" id="Contenido" name="Contenido" rows="7" style="max-width:100%;"></textarea>
+
+                    @Html.ValidationMessageFor(model => model.Contenido, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-dark" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

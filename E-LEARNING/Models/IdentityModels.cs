@@ -61,5 +61,7 @@ namespace IdentitySample.Models
         public System.Data.Entity.DbSet<E_LEARNING.Models.CursoProfe> CursoProfes { get; set; }
 
         public System.Data.Entity.DbSet<E_LEARNING.Models.Matricula> Matriculas { get; set; }
+
+        public System.Data.Entity.DbSet<E_LEARNING.Models.Lecciones> Lecciones { get; set; }
     }
 }
