@@ -48,9 +48,12 @@
                                 <div class="card text-center">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">@x.Titulo</h5>
-                                        <p class="card-text"></p>
-                                        <a href="#" class="btn btn-outline-success">Go somewhere</a>
+                                        <h5 class="card-title">Tema: @x.Titulo</h5>
+                                        <p class="card-text">Gestiona las lecciones de tus alumnos gracias a nuestra plataforma de aprendizaje MyCampus</p>
+                                        @Html.ActionLink("Editar", "Edit", "Lecciones", new { id = x.IdLeccion }, new { @class = "btn btn-outline-dark" })
+                                        @Html.ActionLink("Ver", "Details", "Lecciones", new { id = x.IdLeccion }, new { @class = "btn btn-outline-success" })
+                                        @Html.ActionLink("Eliminar", "Delete", "Lecciones", new { id = x.IdLeccion }, new { @class = "btn btn-outline-dark" })
+
                                     </div>
 
                                 </div>

@@ -18,7 +18,19 @@ namespace E_LEARNING.Controllers
         // GET: Lecciones/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion==id);
+            var Docente = db.CursoProfes.Include(x => x.Profe).SingleOrDefault(x => x.IdCursoProfe == lec.CursoProfe.IdCursoProfe).Profe;
+            ViewBag.docente = ""+Docente.nombre +" "+ Docente.apellidos;
+            if (lec == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(lec);
         }
 
         // GET: Lecciones/Create
@@ -63,18 +75,30 @@ namespace E_LEARNING.Controllers
         // GET: Lecciones/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Lecciones leccion = db.Lecciones.Include(x => x.CursoProfe).SingleOrDefault(x => x.IdLeccion == id);
+            return View(leccion);
         }
 
         // POST: Lecciones/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "idLeccion,Titulo,Contenido")] Lecciones lec, int id)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!ModelState.IsValid) {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
 
-                return RedirectToAction("Index");
+                var leccion = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion == id);
+
+                leccion.Contenido = lec.Contenido;
+                leccion.Titulo = lec.Titulo;
+
+                db.Entry(leccion).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Details","GruposAdmin",new { id = leccion.CursoProfe.IdCursoProfe});
             }
             catch
             {
@@ -83,24 +107,36 @@ namespace E_LEARNING.Controllers
         }
 
         // GET: Lecciones/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Lecciones lec = db.Lecciones.Find(id);
+            if (lec == null) {
+                return HttpNotFound();
+            }
+            return View(lec);
         }
 
         // POST: Lecciones/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion==id);
+                int idGrupo = lec.CursoProfe.IdCursoProfe;
+                db.Lecciones.Remove(lec);
+                db.SaveChanges();
+                return RedirectToAction("Details","GruposAdmin",new { id=idGrupo} );
             }
             catch
             {
-                return View();
+                Lecciones lec = db.Lecciones.Find(id);
+                return View(lec);
             }
         }
     }

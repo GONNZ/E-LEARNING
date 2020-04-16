@@ -1,0 +1,232 @@
+﻿@model E_LEARNING.Models.Lecciones
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Details</h2>
+
+    <div>
+        <h4>Lecciones</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Contenido)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Contenido)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdLeccion }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-4">   @Html.DisplayFor(model => model.Titulo)</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                @ViewBag.docente
+            </p>
+
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Posted on January 1, 2019 at 12:00 PM</p>
+
+            <hr>
+
+
+
+            <hr>
+
+            <!-- Post Content -->
+            <p>
+                @Html.DisplayFor(model => model.Contenido)
+            </p>
+
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Single Comment -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">Commenter Name</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header bg-dark text-white">Panel</h5>
+                <div class="card-body">
+                    Gestione el aula desde aquí, adjunte archivos y recursos con los estudiantes.
+                    <hr />
+                    @* Modal para la administración de la clase *@
+                    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target=".bd-example-modal-lg">Ver</button>
+
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+
+
+
+                                <div class="card border-dark">
+                                    <div class="card-header" >Recursos</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#" class="btn btn-sm btn-dark">Nuevo</a></h5>
+                                        <p class="card-text">
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>
+                                                        Nombre:
+                                                    </th>
+                                                    <th>
+                                                        Opciones:
+                                                    </th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Analisis ASP
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-danger">Eliminar</a>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </p>
+                                    </div>
+                                </div>
+
+                         
+                                <div class="card border-dark">
+                                    <div class="card-header" >Tareas</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"> <a href="#" class="btn btn-sm btn-dark">Nueva</a></h5>
+                                        <p class="card-text">
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>
+                                                        Nombre:
+                                                    </th>
+                                                    <th>
+                                                        Opciones:
+                                                    </th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        Analisis ASP
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-danger">Eliminar</a>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header bg-dark text-white">Recursos</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">Freebies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tutorials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header bg-dark text-white">Tareas</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->

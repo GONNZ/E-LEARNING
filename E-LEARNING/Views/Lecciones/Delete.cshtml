@@ -1,0 +1,41 @@
+﻿@model E_LEARNING.Models.Lecciones
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Confirmación de borrado.</h4>
+        <p>¿Realmente desea eliminar la lección seleccionada y todos sus registros asociados?</p>
+        <hr>
+        <p class="mb-0">Se eliminaran los archivos asociados a la lección</p>
+    </div>
+
+    <div>
+
+        <h4>Datos</h4>
+        <hr />
+
+        <div class="card text-center">
+            <div class="card-header">
+                @Html.DisplayNameFor(model => model.Titulo):  @Html.DisplayFor(model => model.Titulo)
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayNameFor(model => model.Contenido):</h5>
+                <p class="card-text"> @Html.DisplayFor(model => model.Contenido)</p>
+
+            </div>
+
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color mt-3">
+                <input type="submit" value="Delete" class="btn btn-dark" /> 
+              
+            </div>
+        }
+    </div>
