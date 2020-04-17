@@ -101,76 +101,180 @@
                 <div class="card-body">
                     Gestione el aula desde aquí, adjunte archivos y recursos con los estudiantes.
                     <hr />
+
+
+
+
                     @* Modal para la administración de la clase *@
                     <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target=".bd-example-modal-lg">Ver</button>
 
                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-
-
-
-
                                 <div class="card border-dark">
-                                    <div class="card-header" >Recursos</div>
+                                    <div class="card-header">Recursos</div>
                                     <div class="card-body">
-                                        <h5 class="card-title"><a href="#" class="btn btn-sm btn-dark">Nuevo</a></h5>
+
+                                        <!--Botón group par subir archivo-->
+                                        @*<div class="input-group mb-3">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="">Upload</span>
+                                                </div>
+                                            </div>*@
+
+
+                                        @using (Html.BeginForm("SubirArchivo", "Archivos", null, FormMethod.Post, new { enctype = "multipart/form-data", method = "post" }))
+                                        {
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="file" name="file" />
+                                                    <input type="hidden" name="tipo" value=1 />
+                                                    <input type="hidden" name="lec" value=@Model.IdLeccion />
+                                                </div>
+                                                <div class="col-md-6 left">
+                                                    <button type="submit" class="btn btn-sm btn-primary">
+                                                        <span class="glyphicon glyphicon-open"></span>
+                                                        Subir archivo
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+
+
                                         <p class="card-text">
 
-                                            <table class="table">
-                                                <tr>
-                                                    <th>
-                                                        Nombre:
-                                                    </th>
-                                                    <th>
-                                                        Opciones:
-                                                    </th>
-                                                </tr>
+                                            @if (ViewBag.recursos.Count < 1)
+                                            {
+                                                <div class="alert alert-danger" role="alert">
+                                                    No hay recursos asignados aún.
+                                                </div>
+                                            }
+                                            else
+                                            {
 
-                                                <tr>
-                                                    <td>
-                                                        Analisis ASP
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-danger">Eliminar</a>
+                                                @*<table class="table">
+                                                        <tr>
+                                                            <th>
+                                                                Nombre:
+                                                            </th>
+                                                            <th>
+                                                                Opciones:
+                                                            </th>
+                                                        </tr>
 
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                        <tr>
+                                                            <td>
+                                                                Analisis ASP
+                                                            </td>
+                                                            <td>
+                                                                <a href="#" class="btn btn-danger">Eliminar</a>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>*@
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        <table class="table">
+                                                            <tr>
+                                                                <th>
+                                                                    Fecha de Creación
+                                                                </th>
+                                                                <th>
+                                                                    Archivo
+                                                                </th>
+                                                                <th>
+                                                                    Opciones
+                                                                </th>
+                                                                <th></th>
+                                                            </tr>
+                                                            @foreach (var item in ViewBag.recursos)
+                                                            {
+                                                                @*<span>@item.Creado.ToShortDateString() - </span>
+                                                                    <a href="@Url.Action("DescargarArchivo", "Archivos", new { id = item.Id })">
+                                                                        <span class="glyphicon glyphicon-save"></span>
+                                                                        <span>@item.Nombre.@item.Extension</span>
+                                                                    </a>
+                                                                    <span> - Tipo: @item.Tipo - </span>
+                                                                    <a href="@Url.Action("EliminarArchivo", "Archivos",
+                                                                                                            new { id = item.Id })" class="text-danger">
+                                                                        <span class="glyphicon glyphicon-remove text-danger small"></span>
+                                                                        Eliminar archivo
+                                                                    </a>
+                                                                    <br />*@
+
+                                                                <tr>
+                                                                    <td>
+                                                                        @item.Creado.ToShortDateString()
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <a href="@Url.Action("DescargarArchivo", "Archivos", new { id = item.Id })">
+                                                                            <span class="glyphicon glyphicon-save"></span>
+                                                                            <span>@item.Nombre.@item.Extension</span>
+                                                                            <input type="hidden" name="tipo" value=@item.Tipo />
+                                                                        </a>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <a href="@Url.Action("EliminarArchivo", "Archivos",
+                                                                                                    new { id = item.Id })" class="btn btn-outline-danger">
+                                                                            <span class="glyphicon glyphicon-remove text-danger small"></span>
+                                                                            Eliminar archivo
+                                                                        </a>
+
+                                                                    </td>
+
+                                                                </tr>
+
+
+
+
+                                                            }
+                                                       
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            }
                                         </p>
                                     </div>
                                 </div>
 
-                         
-                                <div class="card border-dark">
-                                    <div class="card-header" >Tareas</div>
-                                    <div class="card-body">
-                                        <h5 class="card-title"> <a href="#" class="btn btn-sm btn-dark">Nueva</a></h5>
-                                        <p class="card-text">
 
-                                            <table class="table">
-                                                <tr>
-                                                    <th>
-                                                        Nombre:
-                                                    </th>
-                                                    <th>
-                                                        Opciones:
-                                                    </th>
-                                                </tr>
+                                @*<div class="card border-dark">
+                                        <div class="card-header" >Tareas</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <a href="#" class="btn btn-sm btn-dark">Nueva</a></h5>
+                                            <p class="card-text">
 
-                                                <tr>
-                                                    <td>
-                                                        Analisis ASP
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-danger">Eliminar</a>
+                                                <table class="table">
+                                                    <tr>
+                                                        <th>
+                                                            Nombre:
+                                                        </th>
+                                                        <th>
+                                                            Opciones:
+                                                        </th>
+                                                    </tr>
 
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </p>
-                                    </div>
-                                </div>
+                                                    <tr>
+                                                        <td>
+                                                            Analisis ASP
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-danger">Eliminar</a>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </p>
+                                        </div>
+                                    </div>*@
 
 
 
@@ -217,9 +321,80 @@
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header bg-dark text-white">Tareas</h5>
+                <h5 class="card-header bg-dark text-white">Recursos</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    @if (ViewBag.recursos.Count < 1)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            No hay recursos asignados aún.
+                        </div>
+                    }
+                    else
+                    {
+
+                        @*<table class="table">
+                <tr>
+                    <th>
+                        Nombre:
+                    </th>
+                    <th>
+                        Opciones:
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Analisis ASP
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">Eliminar</a>
+
+                    </td>
+                </tr>
+            </table>*@
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            Fecha de Creación
+                                        </th>
+                                        <th>
+                                            Archivo
+                                        </th>
+                                    </tr>
+                                    @foreach (var item in ViewBag.recursos)
+                                    {
+                                        
+
+                                        <tr>
+                                            <td>
+                                                @item.Creado.ToShortDateString()
+                                            </td>
+
+                                            <td>
+                                                <a href="@Url.Action("DescargarArchivo", "Archivos", new { id = item.Id })">
+                                                    <span class="glyphicon glyphicon-save"></span>
+                                                    <span>@item.Nombre.@item.Extension</span>
+                                                    <input type="hidden" name="tipo" value=@item.Tipo />
+                                                </a>
+                                            </td>
+
+                                     
+
+                                        </tr>
+
+
+
+
+                                    }
+
+                                </table>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ namespace E_LEARNING.Controllers
         // GET: Lecciones
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Lecciones/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -24,6 +24,10 @@ namespace E_LEARNING.Controllers
             }
             Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion==id);
             var Docente = db.CursoProfes.Include(x => x.Profe).SingleOrDefault(x => x.IdCursoProfe == lec.CursoProfe.IdCursoProfe).Profe;
+            var Recursos = db.Archivos.Where(x => x.lecciones.IdLeccion == id).ToList();
+            //Recursos = Recursos.Where(x => x.)
+
+            ViewBag.recursos = Recursos;
             ViewBag.docente = ""+Docente.nombre +" "+ Docente.apellidos;
             if (lec == null)
             {
