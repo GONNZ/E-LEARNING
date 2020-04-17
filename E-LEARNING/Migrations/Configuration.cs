@@ -10,7 +10,6 @@ namespace E_LEARNING.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "IdentitySample.Models.ApplicationDbContext";
         }
 
         protected override void Seed(IdentitySample.Models.ApplicationDbContext context)
