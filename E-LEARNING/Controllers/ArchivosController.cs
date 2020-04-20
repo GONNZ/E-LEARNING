@@ -12,13 +12,7 @@ namespace E_LEARNING.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Archivos
-        public ActionResult Index()
-        {
-            List<Archivo> archivos = db.Archivos.OrderBy(x => x.Creado).ToList();
-            
-            return View(archivos);
-        }
-
+    
         [HttpPost]
         public ActionResult SubirArchivo(HttpPostedFileBase file, string tipo,int lec)
         {

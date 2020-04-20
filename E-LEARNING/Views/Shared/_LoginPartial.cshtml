@@ -19,7 +19,7 @@
                             @Html.ActionLink("Usuarios", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
                             @Html.ActionLink("Cursos", "Index", "Cursos", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
                             @Html.ActionLink("Grupos", "Index", "GruposAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
@@ -44,7 +44,7 @@ else if (Request.IsAuthenticated && User.IsInRole("Profe"))
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
                             @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
                             @Html.ActionLink("Grupos", "Index", "GruposAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
@@ -70,7 +70,7 @@ else if (Request.IsAuthenticated && User.IsInRole("Alumno"))
                             @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
                             @Html.ActionLink("Mis Cursos", "Index", "GruposAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
 
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
@@ -95,7 +95,7 @@ else if (Request.IsAuthenticated)
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
                             @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
 
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
@@ -109,10 +109,10 @@ else
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+                @Html.ActionLink("Registro", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+                @Html.ActionLink("Iniciar Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
             </li>
         </ul>
     </div>
