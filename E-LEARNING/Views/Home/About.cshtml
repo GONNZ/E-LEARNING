@@ -1,12 +1,68 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-</hgroup>
+
 <div class="row-fluid">
-    <div class="span12">
-        <p>Use this area to provide additional information.</p>
+    <div class="card text-white bg-dark mb-3">
+
+        <div class="card-body">
+            <h5 class="card-title">About MyCampus</h5>
+            <p class="card-text">
+                One of the advantages found in using a framework such as .NET is that you should not do everything from scratch, Microsoft makes available to developers classes, methods and other useful code on common actions to facilitate development. of software. Some of these libraries contain code for everyday processes such as file management, collections, database connection, among other things.
+
+                Based on this and as previously mentioned, MVC was used. In this way, a project with this basic structure is generated. In addition to this, with the Identity implementation, additional templates necessary for authentication and authorization are generated. By doing these implementations, we already have a base to start a basic project.
+
+            </p>
+
+            <h4 class="card-title">Implementing functionality</h4>
+            <p class="card-text">
+                Initially, the identity-generated models for users and roles were started, extending them to the project's convenience. Additional fields were added for users (name-ID-date of birth ...) and in roles a description was added for each role.
+
+                Later the management of courses was carried out, this is where the necessary models, views and controllers for the basic CRUD of the courses were created, additionally two options were created. The one to create a new group for the course and the option to generate an enrollment for the course. To make use of these last options, you must already have registered users with a teacher role to generate groups, and users with the student role, to enroll these groups.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Group management</h5>
+                            <p class="card-text text-dark">Once we have the information of the users, administrators, teachers, students and courses. We can generate groups, which is the assignment of teachers and courses, to generate virtual classroom spaces. These groups are the ones that can generate enrollment for students. Finally activating the two remaining roles. Now once you enter with the teacher role, you will have access to the groups assigned to the teacher.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Lessons</h5>
+                            <p class="card-text text-dark">The lessons are found displayed in the detailed view of each group, in this section, if you have Teacher roles, new lessons can be generated, using the controller's create. By performing this process, you return to the detailed view of the group, with the new lesson generated. The other roles will not have access to this option, they will only find information displayed for the group's lessons.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Didactic Resources</h5>
+                            <p class="card-text text-dark">In the detailed view of the lesson, we have in Blog style, the data of the lesson created by the teacher, in addition to a small panel for the teacher role, where it is allowed to upload resources and files, so that they are available to students once they access the lesson and download them.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card text-white bg-info mt-5 mb-3" >
+                <div class="card-header">CONCLUSIONS</div>
+                <div class="card-body">
+                    
+                    <p class="card-text">Finishing the development, we can conclude that the functionality outlined in the requirements section was completed, an asp.net mvc web application was developed, with role management capabilities, which allows the creation of students, teachers and administrators. You can also create courses, manipulate them and assign teachers to create groups and students to groups. Fulfilling the purpose of centralizing information between students, and their respective students through the dynamic creation of lessons. All of the above applying the knowledge acquired during the first semester of 2020, in the "Advanced Programming" courses.    </p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
