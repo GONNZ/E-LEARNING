@@ -65,5 +65,6 @@ namespace IdentitySample.Models
 
         public System.Data.Entity.DbSet<E_LEARNING.Models.Lecciones> Lecciones { get; set; }
         public System.Data.Entity.DbSet<E_LEARNING.Models.Archivo> Archivos { get; set; }
+        public System.Data.Entity.DbSet<E_LEARNING.Models.Comentarios> Comentarios { get; set; }
     }
 }
