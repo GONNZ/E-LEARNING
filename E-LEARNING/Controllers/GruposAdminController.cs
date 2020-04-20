@@ -18,7 +18,7 @@ namespace E_LEARNING.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
- 
+
 
         // GET: GruposAdmin
         public ActionResult Index(string searchProfe, string searchCurso)

@@ -27,8 +27,18 @@ namespace E_LEARNING.Controllers
             Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion==id);
             var Docente = db.CursoProfes.Include(x => x.Profe).SingleOrDefault(x => x.IdCursoProfe == lec.CursoProfe.IdCursoProfe).Profe;
             var Recursos = db.Archivos.Where(x => x.lecciones.IdLeccion == id).ToList();
-            //Recursos = Recursos.Where(x => x.)
 
+
+            //Envio de id usuario:
+
+            string s = User.Identity.Name;
+            String idusuario = db.Users.Where(x => x.Email == s).Include(x => x.Roles).SingleOrDefault().Id;
+
+            List<Comentarios> coments = db.Comentarios.Include(x=> x.Leccion).Include(x=>x.Usuario).Where(x => x.Leccion.IdLeccion == lec.IdLeccion).ToList();
+
+            ViewBag.cantcoments = coments.Count;
+            ViewBag.comentarios = coments;
+            ViewBag.idUsuario = idusuario;                
             ViewBag.recursos = Recursos;
             ViewBag.docente = ""+Docente.nombre +" "+ Docente.apellidos;
             if (lec == null)
