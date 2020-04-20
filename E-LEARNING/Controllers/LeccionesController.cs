@@ -11,11 +11,13 @@ using System.Web.Mvc;
 
 namespace E_LEARNING.Controllers
 {
+    [Authorize(Roles = "Profe")]
     public class LeccionesController : Controller
     {
         // GET: Lecciones
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Lecciones/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

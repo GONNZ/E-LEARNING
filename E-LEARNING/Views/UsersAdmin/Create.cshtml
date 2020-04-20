@@ -3,59 +3,59 @@
     ViewBag.Title = "Create";
 }
 
-<h2>@ViewBag.Title.</h2>
+
 
 @using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Nuevo Usuario:</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-error" })
     <div class="form-group">
-        @Html.LabelFor(m => m.nombre, new { @class = "col-md-2 control-label" })
+        Nombre:
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.apellidos, new { @class = "col-md-2 control-label" })
+        Apellidos:
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.apellidos, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.cedula, new { @class = "col-md-2 control-label" })
+        Cédula:
         <div class="col-md-10">
             @Html.EditorFor(m => m.cedula, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.fechaNacimiento, new { @class = "col-md-2 control-label" })
+        Fecha de Nacimiento:
         <div class="col-md-10">
             @Html.EditorFor(m => m.fechaNacimiento, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        Email:
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        Contraseña:
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        Confirme la contraseña:
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label">
-            Select User Role
+            Seleccione los roles:
         </label>
         <div class="col-md-10">
             @foreach (var item in (SelectList)ViewBag.RoleId)

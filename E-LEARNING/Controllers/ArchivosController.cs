@@ -103,7 +103,7 @@ namespace E_LEARNING.Controllers
         }
 
         [HttpGet]
-        public ActionResult EliminarArchivo(Guid id)
+        public ActionResult EliminarArchivo(Guid id, int leccion)
         {
             Archivo _archivo;
 
@@ -123,7 +123,7 @@ namespace E_LEARNING.Controllers
                 
                 // Redirigimos a la Acción 'Index' para mostrar
                 // Los archivos subidos al Servidor.
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Lecciones",new { id=leccion});
             }
             else
             {
