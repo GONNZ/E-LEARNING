@@ -13,7 +13,7 @@ namespace E_LEARNING.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202004100204056_Initial"; }
+            get { return "202004170321304_Initial"; }
         }
         
         string IMigrationMetadata.Source

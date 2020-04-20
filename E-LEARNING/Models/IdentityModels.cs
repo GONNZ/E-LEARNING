@@ -13,6 +13,7 @@ namespace IdentitySample.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+
         public string nombre { get; set; }
         public int cedula { get; set; }
         public string apellidos { get; set; }
@@ -63,5 +64,6 @@ namespace IdentitySample.Models
         public System.Data.Entity.DbSet<E_LEARNING.Models.Matricula> Matriculas { get; set; }
 
         public System.Data.Entity.DbSet<E_LEARNING.Models.Lecciones> Lecciones { get; set; }
+        public System.Data.Entity.DbSet<E_LEARNING.Models.Archivo> Archivos { get; set; }
     }
 }

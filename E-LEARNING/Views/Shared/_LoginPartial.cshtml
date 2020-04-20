@@ -10,7 +10,7 @@
 
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administración
                         </button>
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
@@ -38,12 +38,12 @@ else if (Request.IsAuthenticated && User.IsInRole("Profe"))
 
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profesor
                         </button>
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
                             @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
-
+                            @Html.ActionLink("Grupos", "Index", "GruposAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
                             <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                         </div>
                     </div>
@@ -63,11 +63,12 @@ else if (Request.IsAuthenticated && User.IsInRole("Alumno"))
 
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Alumno
                         </button>
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">
                             @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+                            @Html.ActionLink("Mis Cursos", "Index", "GruposAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
 
                             <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                         </div>
@@ -88,7 +89,7 @@ else if (Request.IsAuthenticated)
 
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Alumno
                         </button>
                         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuButton">

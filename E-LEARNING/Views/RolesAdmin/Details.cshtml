@@ -4,25 +4,24 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details.</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>Roles.</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+        Nombre:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
 </div>
-<h4>List of users in this role</h4>
+<h4>Listado de usuarios con este rol: </h4>
 @if (ViewBag.UserCount == 0)
 {
     <hr />
-    <p>No users found in this role.</p>
+    <p>Este rol no posee usuarios asociados.</p>
 }
 
 <table class="table">
@@ -37,8 +36,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class="btn btn-dark"}) |
+    @Html.ActionLink("Back to List", "Index", null,  new { @class="btn btn-dark"})
 </p>
 
 

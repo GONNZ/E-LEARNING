@@ -4,10 +4,13 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using E_LEARNING.Models;
 using IdentitySample.Models;
+using Microsoft.AspNet.Identity.Owin;
+
 
 namespace E_LEARNING.Controllers
 {
@@ -15,10 +18,37 @@ namespace E_LEARNING.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+ 
+
         // GET: GruposAdmin
         public ActionResult Index(string searchProfe, string searchCurso)
         {
-            var grupos = db.CursoProfes.Include(x => x.Curso).Include(x => x.Profe).ToList();
+
+            string s = User.Identity.Name;
+            ApplicationUser usuario = db.Users.Where(x => x.Email == s).Include(x => x.Roles).SingleOrDefault();
+
+
+            var grupos = db.CursoProfes.Include(x => x.Curso).Include(x => x.Matricula).Include(x => x.Profe).ToList();
+
+            if (User.IsInRole("Profe")) {
+                grupos = grupos.Where(x => x.Profe.Id == usuario.Id).ToList();   
+            }
+
+            if (User.IsInRole("Alumno"))
+            {
+                var matriculas = db.Matriculas.Where(x => x.Alumno.Id == usuario.Id).ToList();
+                List<CursoProfe> cursosMat = new List<CursoProfe>();
+
+                foreach (var mat in matriculas) {
+                    CursoProfe grupo = new CursoProfe();
+                    grupo = db.CursoProfes.Include(x=>x.Curso).Include(x=>x.Profe).Include(x=>x.Lecciones).Where(x => x.IdCursoProfe == mat.CursoProfe.IdCursoProfe).SingleOrDefault();
+                    cursosMat.Add(grupo);
+                }
+
+                grupos = cursosMat;
+    
+            }
+
 
             if (!String.IsNullOrEmpty(searchProfe)) 
             {
@@ -44,6 +74,17 @@ namespace E_LEARNING.Controllers
             List<Lecciones> lecciones = db.Lecciones.Where(x => x.CursoProfe.IdCursoProfe == cursoProfe.IdCursoProfe).ToList();
             ViewBag.cantlecc = lecciones.Count;
             ViewBag.Lecciones = lecciones;
+
+            List<Matricula> matriculas = db.Matriculas.Include(x => x.Alumno).Include(x => x.CursoProfe).Where(x => x.CursoProfe.IdCursoProfe == cursoProfe.IdCursoProfe).ToList();
+            List<ApplicationUser> alumnos = new List<ApplicationUser>();
+
+            if (matriculas.Count > 0) {
+                foreach (Matricula mat in matriculas) {
+                    alumnos.Add(mat.Alumno);
+                }
+            }
+
+            ViewBag.alumnos = alumnos;
 
             if (cursoProfe == null)
             {

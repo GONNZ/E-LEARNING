@@ -8,15 +8,32 @@ namespace E_LEARNING.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.TB_Cursos",
+                "dbo.Archivoes",
                 c => new
                     {
-                        IdCurso = c.Int(nullable: false, identity: true),
-                        CodigoCurso = c.String(nullable: false),
-                        NombreCurso = c.String(nullable: false),
-                        DescripcionCurso = c.String(nullable: false),
+                        Id = c.Guid(nullable: false),
+                        Creado = c.DateTime(nullable: false),
+                        Nombre = c.String(nullable: false, maxLength: 100),
+                        Extension = c.String(nullable: false, maxLength: 4),
+                        Tipo = c.String(nullable: false),
+                        lecciones_IdLeccion = c.Int(),
                     })
-                .PrimaryKey(t => t.IdCurso);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Lecciones", t => t.lecciones_IdLeccion)
+                .Index(t => t.lecciones_IdLeccion);
+            
+            CreateTable(
+                "dbo.Lecciones",
+                c => new
+                    {
+                        IdLeccion = c.Int(nullable: false, identity: true),
+                        Titulo = c.String(),
+                        Contenido = c.String(),
+                        CursoProfe_IdCursoProfe = c.Int(),
+                    })
+                .PrimaryKey(t => t.IdLeccion)
+                .ForeignKey("dbo.TB_CursoProfe", t => t.CursoProfe_IdCursoProfe)
+                .Index(t => t.CursoProfe_IdCursoProfe);
             
             CreateTable(
                 "dbo.TB_CursoProfe",
@@ -33,17 +50,15 @@ namespace E_LEARNING.Migrations
                 .Index(t => t.Profe_Id);
             
             CreateTable(
-                "dbo.Lecciones",
+                "dbo.TB_Cursos",
                 c => new
                     {
-                        IdLeccion = c.Int(nullable: false, identity: true),
-                        Titulo = c.String(),
-                        Contenido = c.String(),
-                        CursoProfe_IdCursoProfe = c.Int(),
+                        IdCurso = c.Int(nullable: false, identity: true),
+                        CodigoCurso = c.String(nullable: false),
+                        NombreCurso = c.String(nullable: false),
+                        DescripcionCurso = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.IdLeccion)
-                .ForeignKey("dbo.TB_CursoProfe", t => t.CursoProfe_IdCursoProfe)
-                .Index(t => t.CursoProfe_IdCursoProfe);
+                .PrimaryKey(t => t.IdCurso);
             
             CreateTable(
                 "dbo.Matriculas",
@@ -146,6 +161,7 @@ namespace E_LEARNING.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Lecciones", "CursoProfe_IdCursoProfe", "dbo.TB_CursoProfe");
             DropForeignKey("dbo.TB_CursoProfe", "Curso_IdCurso", "dbo.TB_Cursos");
+            DropForeignKey("dbo.Archivoes", "lecciones_IdLeccion", "dbo.Lecciones");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -154,18 +170,20 @@ namespace E_LEARNING.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Matriculas", new[] { "CursoProfe_IdCursoProfe" });
             DropIndex("dbo.Matriculas", new[] { "Alumno_Id" });
-            DropIndex("dbo.Lecciones", new[] { "CursoProfe_IdCursoProfe" });
             DropIndex("dbo.TB_CursoProfe", new[] { "Profe_Id" });
             DropIndex("dbo.TB_CursoProfe", new[] { "Curso_IdCurso" });
+            DropIndex("dbo.Lecciones", new[] { "CursoProfe_IdCursoProfe" });
+            DropIndex("dbo.Archivoes", new[] { "lecciones_IdLeccion" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Matriculas");
-            DropTable("dbo.Lecciones");
-            DropTable("dbo.TB_CursoProfe");
             DropTable("dbo.TB_Cursos");
+            DropTable("dbo.TB_CursoProfe");
+            DropTable("dbo.Lecciones");
+            DropTable("dbo.Archivoes");
         }
     }
 }

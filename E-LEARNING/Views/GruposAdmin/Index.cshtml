@@ -5,45 +5,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="mb-3 ml-3">Gestión de Grupos</h2>
+@if (User.IsInRole("Profe") || User.IsInRole("Admin"))
+{
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Administración de Grupos</h4>
+        <p>Bienvenido a la plataforma de aprendizaje en línea MyCampus</p>
+        <hr>
+        <p class="mb-0">Aquí se encuentra la lista de cursos</p>
+    </div>
+}
+else
+{
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">My Campus</h4>
+        <p>Bienvenido a la plataforma de aprendizaje en línea MyCampus</p>
+        <hr>
+        <p class="mb-0">Aquí se encuentra la lista de cursos matriculados para tí</p>
+    </div>
+}
 
-<!--Buscador-->
+<div class="row mb-3">
+    <div class="col-8">
 
-<button type="button" class="btn btn-primary float-right mr-3" data-toggle="modal" data-target="#staticBackdrop">
-    Buscador
-</button>
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Crear Grupo", "Index", "Cursos", null, new { @class = "btn btn-success ml-3" })
+            </p>
+        }
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Buscador</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                @using (Html.BeginForm())
-                {
-                    <p>
-                        Nombre Profesor: @Html.TextBox("searchProfe", null, new { @class = "m-2" }) <br />
-                        Nombre Curso: @Html.TextBox("searchCurso",null, new { @class = "m-2" }) <br />
-                        <input type="submit" value="Buscar" class="btn btn-success" />
-                    </p>
-                }
+    </div>
+
+    <div class="col-4">
+        <!--Buscador-->
+
+        <button type="button" class="btn btn-primary float-right mr-3" data-toggle="modal" data-target="#staticBackdrop">
+            Buscador
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Buscador</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm())
+                        {
+
+                            if (User.IsInRole("Profe"))
+                            {
+                                <p>
+                                    Nombre Curso: @Html.TextBox("searchCurso", null, new { @class = "m-2" }) <br />
+                                    <input type="submit" value="Buscar" class="btn btn-success" />
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    Nombre Profesor: @Html.TextBox("searchProfe", null, new { @class = "m-2" }) <br />
+                                    Nombre Curso: @Html.TextBox("searchCurso", null, new { @class = "m-2" }) <br />
+                                    <input type="submit" value="Buscar" class="btn btn-success" />
+                                </p>
+                            }
+
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--Fin de buscador-->
 
 
-
-<p>
-    @Html.ActionLink("Crear Grupo", "Index", "Cursos", null, new { @class = "btn btn-success ml-3" })
-</p>
 
 <div class="container">
 
@@ -63,7 +102,14 @@
                 <h5 class="card-title">@item.Profe.nombre @item.Profe.apellidos</h5>
                 <p class="card-text">@item.Curso.DescripcionCurso</p>
                 @Html.ActionLink("Ver Grupo", "Details", new { id = item.IdCursoProfe }, new { @class = "btn btn-outline-success btn-sm" })
-                <a href="#" class="btn btn-outline-danger btn-sm"> Borrar Grupo</a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdCursoProfe }, new { @class = "btn btn-outline-danger btn-sm" })
+                }
+
+
             </div>
         </div>
 

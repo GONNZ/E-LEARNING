@@ -4,21 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details.</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>User</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            Email:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.UserName)
         </dd>
     </dl>
 </div>
-<h4>List of roles for this user</h4>
+<h4>Roles asignados a este usuario:</h4>
 @if (ViewBag.RoleNames.Count == 0)
 {
     <hr />
@@ -37,8 +37,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id,  @class="btn btn-dark" }) |
-    @Html.ActionLink("Back to List", "Index", new { @class="btn btn-dark"})
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id}, new { @class="btn btn-dark"}) |
+    @Html.ActionLink("Back to List", "Index", null,new { @class="btn btn-dark"})
 </p>
 
 

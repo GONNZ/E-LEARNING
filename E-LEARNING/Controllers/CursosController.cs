@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace E_LEARNING.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CursosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -5,23 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado de cursos: </h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoCurso)
+            Código del curso:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreCurso)
+            Nombre del curso:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DescripcionCurso)
+            Descripción del curso:
         </th>
-        <th></th>
+        <th>
+            Gestión de cursos:
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -36,13 +38,11 @@
             @Html.DisplayFor(modelItem => item.DescripcionCurso)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IdCurso }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdCurso }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdCurso }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.IdCurso }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdCurso }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.IdCurso }) |
             @Html.ActionLink("Generar Grupo", "Grupo", new { id = item.IdCurso }) |
             @Html.ActionLink("Matricular Estudiante", "Matricula", new { id = item.IdCurso }) 
-
-
         </td>
     </tr>
 }

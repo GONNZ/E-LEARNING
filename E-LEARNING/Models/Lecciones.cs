@@ -15,6 +15,7 @@ namespace E_LEARNING.Models
         public string Titulo { get; set; }
         public String Contenido { get; set; }
         public CursoProfe CursoProfe { get; set; }
+        public List<Archivo> Archivos { get; set; }
 
     }
 }
