@@ -143,13 +143,13 @@ namespace E_LEARNING.Controllers
         {
             try
             {
-                Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).SingleOrDefault(x=>x.IdLeccion==id);
+                Lecciones lec = db.Lecciones.Include(x=>x.CursoProfe).Include(x=>x.Comentarios).Include(x=>x.Archivos).SingleOrDefault(x=>x.IdLeccion==id);
                 int idGrupo = lec.CursoProfe.IdCursoProfe;
                 db.Lecciones.Remove(lec);
                 db.SaveChanges();
                 return RedirectToAction("Details","GruposAdmin",new { id=idGrupo} );
             }
-            catch
+            catch (Exception e)
             {
                 Lecciones lec = db.Lecciones.Find(id);
                 return View(lec);

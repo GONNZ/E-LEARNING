@@ -145,7 +145,7 @@ namespace E_LEARNING.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CursoProfe cursoProfe = db.CursoProfes.Find(id);
+            CursoProfe cursoProfe = db.CursoProfes.Include(x=>x.Curso).Include(x=>x.Profe).Include(x=>x.Matricula).Include(x=>x.Lecciones).SingleOrDefault(x=>x.IdCursoProfe == id);
             db.CursoProfes.Remove(cursoProfe);
             db.SaveChanges();
             return RedirectToAction("Index");
