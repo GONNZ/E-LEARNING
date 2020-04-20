@@ -5,228 +5,148 @@
 <div class="jumbotron">
     <h1>My Campus | Plataforma E-LEARNING</h1>
     <p class="lead">Esta plataforma brinda a los usuarios una herramienta de gestion de aprendizaje online.</p>
-    @Html.ActionLink("Ver más","Contact", null, new { @class="btn btn-outline-primary"})
+    @Html.ActionLink("Ver más", "Contact", null, new { @class = "btn btn-outline-primary" })
 </div>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row mb-3">
+    <div class="col-md-6">
         <dl>
-            <dt>Initialize ASP.NET Identity</dt>
+            <dt>I. INTRODUCTION</dt>
             <dd>
-                You can initialize ASP.NET Identity when the application starts. Since ASP.NET Identity is Entity Framework based in this sample,
-                you can create DatabaseInitializer which is configured to get called each time the app starts.
-                <strong>Please look in App_Start\IdentityConfig.cs</strong>
-                This code shows the following
-                <ul>
-                    <li>When should the Initializer run and when should the database be created</li>
-                    <li>Create Admin user</li>
-                    <li>Create Admin role</li>
-                    <li>Add Admin user to Admin role</li>
-                </ul>
+                In search of selecting a topic for the development of the skills acquired during the advanced
+                programming course. The development of an online learning platform was chosen.
+                This was decided by the need for the chosen theme to work to cover some social need. On the other
+                hand, this theme allows for the accurate application of the themes seen throughout the course. The
+                system seeks to provide a virtual classroom management tool, with a friendly interface, that allows
+                users to easily adapt to the software.
             </dd>
         </dl>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <dl>
-            <dt>Add profile data for the user</dt>
+            <dt>II. JUSTIFICATION</dt>
             <dd>
-                <a href="http://blogs.msdn.com/b/webdev/archive/2013/10/16/customizing-profile-information-in-asp-net-identity-in-vs-2013-templates.aspx">Please follow this tutorial.</a>
+                As a result of the arrival of technology in our lives, one of the main advantages is the closeness
+                that it gives us with information. The Internet is the perfect tool for the transmission of
+                information on a global level, breaking the communication barrier. From that moment, many activities
+                that were previously face-to-face saw the possibility of being carried out virtually.
+                Today we have the possibility of developing systems that allow centralizing information, connecting
+                groups of people to share it. In the educational field, the term "E-learning" has been generalized
+                to refer to online learning platforms.
+                Based on the above and looking to generate a system that can be useful to society, it was decided to
+                develop one of these platforms, open to the public, with open source code.
 
-                <ul>
-                    <li>Add profile information in the Users Table</li>
-                    <li>Look in Models\IdentityModels.cs for examples</li>
-                </ul>
             </dd>
         </dl>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-12">
         <dl>
-            <dt>Validation</dt>
+            <dt>III. REQUIREMENTS</dt>
             <dd>
-                When you create a User using a username or password, the Identity system performs validation on the username and password, and the passwords are hashed before they are
-                stored in the database. You can customize the validation by changing some of the properties of the validators such as Turn alphanumeric on/off, set minimum password length
-                or you can write your own custom validators and register them with the UserManager.
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Register a user and login</dt>
-            <dd>
-                Click @Html.ActionLink("Register", "Register", "Account") and see the code in AccountController.cs and Register Action.
-                Click @Html.ActionLink("Log in", "Login", "Account") and see the code in AccountController.cs and Login Action.
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Social Logins</dt>
-            <dd>
-                You can the support so that users can login using their Facebook, Google, Twitter, Microsoft Account and more.
-            </dd>
-            <dd>
-                <ul>
-                    <li>
-                        <a href="http://www.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/">Add Social Logins</a>
-                    </li>
-                    <li>
-                        <a href="http://blogs.msdn.com/b/webdev/archive/2013/10/16/get-more-information-from-social-providers-used-in-the-vs-2013-project-templates.aspx">Get more data about the user when they login suing Facebook</a>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Basic User Management</dt>
-            <dd>
-                Do Create, Update, List and Delete Users.
-                Assign a Role to a User.
-                Only Users In Role Admin can access this page. This uses the [Authorize(Roles = "Admin")] on the UserAdmin controller.
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Basic Role Management</dt>
-            <dd>
-                Do Create, Update, List and Delete Roles.
-                Only Users In Role Admin can access this page. This authorization is doen by using the [Authorize(Roles = "Admin")] on the RolesAdmin controller.
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Account Confirmation</dt>
-            <dd>
-                When you register a new account, you will be sent an email confirmation.
-                You can use an email service such as <a href="http://www.windowsazure.com/en-us/documentation/articles/sendgrid-dotnet-how-to-send-email/">SendGrid</a> which integrate nicely with Windows Azure and requires no configuration or
-                set up an SMTP server to send email.
-                You can send email using the EmailService which is registered in App_Start\IdentityConfig.cs
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Two-Factor Authentication</dt>
-            <dd>
-                This sample shows how you can use Two-Factor authentication. This sample has a SMS and email service registered where you can send SMS or email for sending the security code.
-                You can add more two-factor authentication factors such as QR codes and plug them into ASP.NET Identity.
-                <ul>
-                    <li>
-                        You can use a SMS using <a href="https://www.twilio.com/">Twilio</a> or use any means of sending SMS. Please <a href="https://www.twilio.com/docs/quickstart/csharp/sms/sending-via-rest">read</a> for more details on using Twilio.
-                        You can send SMS using the SmsService which is registered in App_Start\IdentityConfig.cs
-                    </li>
-                    <li>
-                        You can use an email service such as <a href="http://www.windowsazure.com/en-us/documentation/articles/sendgrid-dotnet-how-to-send-email/">SendGrid</a> or
-                        set up an SMTP server to send email.
-                        You can send email using the EmailService which is registered in App_Start\IdentityConfig.cs
-                    </li>
+                This system seeks to make available to users the tool of a virtual classroom. This implies a portal
+                where teachers can create spaces to share information with their students.
+                The first point to take into account follows from the above. The need to have different views for
+                each type of user. In other words, each user will have identifiers that allow them to access certain
+                options and restrict others.
+                The above will be achieved with the implementation of security and authentication measures, in this
+                way each person who uses the application will have to identify themselves. In this way, we jump to
+                the next point, authorization. By having the information of the users who access the system, it
+                becomes possible to create roles and assign them.
+                The roles will be the identifiers, they will be assigned to the users and later, with this, it will
+                be validated whether the user in question can access a part of the system or not.
+                Within the project 3 roles will be needed as minimum, Administrator - Teacher -Student.
+                The administrator role will be in charge of the administration of the system in general. This role
+                has access to all the views of the system, it is also possible to manage all the configurations
+                prior to the virtual classroom function, these configurations will be called "Master Data",
+                necessary for the use of the application. Focused on the project, the administrator will be in
+                charge of creating system users, creating and assigning roles to these users.
+                The role Student, will be in charge of consuming the resources created dynamically by the teachers,
+                will have access to the list of courses registered for him, access the virtual classroom space of
+                each subject, see the lessons and download the assigned resources. In this way, the functionality of
+                the system to be developed for each specific role is explained, generating a functional, dynamic
+                virtual classroom software with roles, authentication and a friendly interface. Thus allowing
+                centralizing information between a group of students and their teacher.
 
-                    <li>
-                        When you login, you can add a phone number by clicking the Manage page.
-                    </li>
-                    <li>
-                        Once you add a phone number and have the Phone service hooked to send a SMS, you will get a code through SMS to confirm your phone number.
-                    </li>
-                    <li>
-                        In the Manage page, you can turn on Two-Factor authentication.
-                    </li>
-                    <li>
-                        When you logout and login, after you enter the username and password, you will get an option of how to get the security code to use for two-factor authentication.
-                    </li>
-                    <li>
-                        You can copy the code from your SMS or email and enter in the form to login.
-                    </li>
-                    <li>
-                        The sample also shows how to protect against Brute force attacks against two-factor codes. When you enter a code incorrectly for 5 times then you will be
-                        lockedout for 5 min before you can enter a new code. These settings can be configured in App_Start\IdentityConfig.cs by setting  DefaultAccountLockoutTimeSpan and MaxFailedAccessAttemptsBeforeLockout on the UserManager.
-                    </li>
-                    <li>
-                        If the machine you are browsing this website is your own machine, you can choose to check the "Remember Me" option after you enter the code.
-                        This option will remember you forever on this machine and will not ask you for the two-factor authentication, the next time when you login to the website.
-                        You can change your "Remember Me" settings for two-factor authentication in the Manage page.
-                    </li>
-                </ul>
             </dd>
         </dl>
     </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Account Lockout</dt>
-            <dd>
-                Provide a way to Lockout out the user if the user enters their password or two-factor codes incorrectly.
-                The number of invalid attempts and the timespan for the users are locked out can be configured.
-                A developer can optionally turn off Account Lockout for certain user accounts should they need to.
-            </dd>
-            <ul>
-                <li>Account LockOut settings can be configured in the UserManager in IdentityConfig.cs</li>
-            </ul>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Security Token provider</dt>
-            <dd>
-                Support a way to regenerate the Security Token for the user in cases when the User changes there password or any other security related information such as removing an associated login(such as Facebook, Google, Microsoft Account etc).
-                This is needed to ensure that any tokens generated with the old password are invalidated. In the sample project, if you change the users password then a new token is generated for the user and any previous tokens are invalidated.
-                This feature provides an extra layer of security to your application since when you change your password, you will be logged out from everywhere (all other browsers) where you have logged into this application.
-            </dd>
-            <dd>
-                <ul>
-                    <li>The provider is registered when you add CookieAuthentication in StartupAuth to your application.</li>
-                </ul>
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Password Reset</dt>
-            <dd>
-                Allows the user to reset their passwords if they have forgotten their password. In this sample users need to confirm their email before they can reset their passwords.
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Custom Storage providers</dt>
-            <dd>
-                You can extend ASP.NET Identity to write your own custom storage provider for storing the ASP.NET Identity system and user data
-                in a persistance system of your choice such as MondoDb, RavenDb, Azure Table Storage etc.
-            </dd>
-            <dd>
-                <ul>
-                    <li>
-                        <a href="http://www.asp.net/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity">
-                            learn more on how to implement your own storage provider
-                        </a>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
-    </div>
-    <div class="col-md-4">
-        <dl>
-            <dt>Documentation</dt>
-            <dd>
-                <ul>
-                    <li>
-                        Tutorials: <a href="www.asp.net/identity">www.asp.net/identity</a>
-                    </li>
-                    <li>
-                        StackOverflow: <a href="http://stackoverflow.com/questions/tagged/asp.net-identity">http://stackoverflow.com/questions/tagged/asp.net-identity</a>
-                    </li>
-                    <li>
-                        Twitter: #identity #aspnet
-                    </li>
-                    <li>
-                        <a href="http://curah.microsoft.com/55636/aspnet-identity">ASP.NET Identity on curah</a>
-                    </li>
-                    <li>
-                        Have bugs or suggestions for ASP.NET Identity <a href="http://aspnetidentity.codeplex.com/">http://aspnetidentity.codeplex.com/</a>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">IV. TECHNOLOGIES APPLIED</h5>
+                <div class="card-text">
+                    <div class="card-group">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">ASP.NET Framework</h5>
+                                <p class="card-text">
+                                    It started from the use of Microsoft's ASP.NET framework, [1] They define
+                                    ASP.net as a developer platform made up of tools, programming languages, and
+                                    libraries for building many different types of applications. In this case it
+                                    will be Web.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">MVC</h5>
+                                <p class="card-text">
+                                    For this project, the MCV model-view-controller development
+                                    model was used. It allows the developer to separate the graphical user
+                                    interface, the logic used within the application, and the database communication
+                                    model. This pattern goes beyond ASP.net and is used in many technologies.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Entity Framework</h5>
+                                <p class="card-text">
+                                    Another tool used within the project is the Entity Framework,
+                                    this is an ORM (object relational mapping) that allows you to relate the tables
+                                    in the database with the objects used in our project.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Identity</h5>
+                                <p class="card-text">
+                                    Identity is a set of code libraries for authorization and
+                                    authentication processes within a common application. Authentication refers to
+                                    the way in which users access the application, while authorization allows
+                                    configuring the public and private areas of the project. 
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Razor</h5>
+                                <p class="card-text">
+                                    Razor is a template engine that allows you to include code
+                                    within views. In this way you can send information from the controller to the
+                                    view, and work with this information. This can be used to perform view level
+                                    validations among other things.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
